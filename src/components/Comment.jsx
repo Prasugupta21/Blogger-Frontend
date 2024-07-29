@@ -35,7 +35,7 @@ const handleEdit=()=>{
 }
 const handleSave=async () => {
     try {
-        const {data,status}=await axios.put(`/comments/editcomment/${comment._id}`,{
+        const {status}=await axios.put(`/comments/editcomment/${comment._id}`,{
             content:editedContent
         });
         if(status===201){

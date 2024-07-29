@@ -37,7 +37,7 @@ const Header = () => {
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
-  const list = [{ title: "Home" }, { title: "About" }];
+  
 
   const toggleDropdown = () => {
     setOpen(!open);

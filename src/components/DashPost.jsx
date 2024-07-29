@@ -46,7 +46,7 @@ const DashPost = () => {
   const handleDeletePost = async () => {
     setShowModal(false);
     try {
-      const { data, status } = await axios.delete(`/posts/deletepost/${postId}/${currUser?.user?._id}`);
+      const {  status } = await axios.delete(`/posts/deletepost/${postId}/${currUser?.user?._id}`);
       if (status === 200) {
         setUserPost(prev => prev.filter(post => post._id !== postId));
         

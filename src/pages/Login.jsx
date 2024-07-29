@@ -74,7 +74,7 @@ const Login = () => {
               />
               <TextInput
                 type="email"
-                placeholder="name@gmail.com"
+                placeholder="name@company.com"
                 id="email"
                
                 onChange={handleChange}

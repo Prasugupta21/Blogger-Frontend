@@ -13,6 +13,7 @@ const OAuth = () => {
     provider.setCustomParameters({ prompt: "select_account" });
     try {
       const result = await signInWithPopup(auth, provider);
+      console.log(result.user);
       const res = await fetch("/google", {
         method: "POST",
         headers: {

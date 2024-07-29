@@ -58,9 +58,7 @@ const DashProfile = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  useEffect(() => {
-    if (!currUser) navigate("/login");
-  }, [currUser]);
+ 
   const uploadImage = async () => {
     
     setImageFileUploading(true);

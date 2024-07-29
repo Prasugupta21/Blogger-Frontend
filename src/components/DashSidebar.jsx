@@ -1,24 +1,15 @@
 
-import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 export default function DashSidebar() {
-  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currUser } = useSelector((state) => state.user);
-  const [tab, setTab] = useState("");
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const tabFromUrl = urlParams.get("tab");
-    if (tabFromUrl) {
-      setTab(tabFromUrl);
-    }
-  }, [location.search]);
+ 
   const handleLogOut = async () => {
     try {
       const data = await axios.post("/logout");

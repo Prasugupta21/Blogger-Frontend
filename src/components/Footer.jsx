@@ -10,17 +10,17 @@ export default function FooterSection() {
     <h1 className='text-2xl text-center font-bold text-purple-500 '>Connect with me</h1>
     <div className="flex justify-center space-x-5">
 
-        <a href={"https://www.linkedin.com/in/prasu-gupta-9180bb226/"} target="_blank" >
+        <a href={"https://www.linkedin.com/in/prasu-gupta-9180bb226/"} target="_blank" rel="noreferrer" >
             <FaLinkedin className='text-3xl hover:text-pink-500 text-blue-500 dark:text-white' />
         </a>
-        <a href={"https://www.linkedin.com/in/prasu-gupta-9180bb226/"} target="_blank" >
+        <a href={"https://www.linkedin.com/in/prasu-gupta-9180bb226/"} target="_blank" rel="noreferrer" >
             <FaGithub className='text-3xl hover:text-pink-500 text-black dark:text-white' />
         </a>
        
-        <a href="https://facebook.com" target="_blank"   >
+        <a href="https://facebook.com" target="_blank"   rel="noreferrer">
             <FaFacebook className='text-3xl hover:text-pink-500 text-blue-500 dark:text-white' />
         </a>
-        <a href="https://twitter.com" target="_blank"  >
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" >
             <FaTwitter className='text-3xl hover:text-pink-500 text-blue-400 dark:text-white ' />
         </a>
     </div>

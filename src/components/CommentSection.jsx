@@ -85,7 +85,7 @@ setComments(comments.map((comment)=>
           setShowModal(false);
             if(!currUser)navigate('/login');
     try {
-        const {data,status}=await axios.delete(`/comments/deletecomment/${commentId}`);
+        const {status}=await axios.delete(`/comments/deletecomment/${commentId}`);
         if(status===200){
             setComments(comments.filter((comment)=>comment._id !==commentId));
        

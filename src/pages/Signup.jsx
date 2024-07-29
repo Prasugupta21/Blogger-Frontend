@@ -76,7 +76,7 @@ const Signup = () => {
               <Label value='Your Email' className='dark:text-white text-black' />
               <TextInput
                 type='email'
-                placeholder='name@gmail.com'
+              placeholder='name@company.com'
                 id='email'
                 name='new-email'
                 autoComplete='off'

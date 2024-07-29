@@ -50,7 +50,7 @@ const DashUsers = () => {
 
   const handleDeleteUser = async () => {
     try {
-      const { data, status } = await axios.delete(`/delete/${id}`);
+      const {  status } = await axios.delete(`/delete/${id}`);
       if (status === 200) {
         
         setUsers((prevUsers) => {
