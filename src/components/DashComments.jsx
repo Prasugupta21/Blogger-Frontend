@@ -28,6 +28,7 @@ export default function DashComments() {
     if (currUser?.user?.isAdmin) {
       fetchComments();
     }
+    // eslint-disable-next-line
   }, [currUser?.user?._id]);
 
   const handleShowMore = async () => {

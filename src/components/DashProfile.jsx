@@ -52,6 +52,7 @@ const DashProfile = () => {
     if (imageFile) {
       uploadImage();
     }
+    // eslint-disable-next-line
   }, [imageFile]);
 
   const handleChange = (e) => {

@@ -57,6 +57,7 @@ const Search = () => {
         }
 
         fetchPosts(); 
+        // eslint-disable-next-line
     },[location.search]);
    
 

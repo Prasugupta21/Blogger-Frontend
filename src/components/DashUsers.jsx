@@ -30,6 +30,7 @@ const DashUsers = () => {
       }
     };
     if (currUser?.user?.isAdmin) fetchUsers();
+    // eslint-disable-next-line
   }, [currUser?.user?._id]);
   useEffect(() => {
   }, [users]);

@@ -39,11 +39,14 @@ export default function UpdatePost() {
           return;
         }
       };
+
+
 if(currUser?.user?.isAdmin) fetchPost();
      
     } catch (error) {
       console.log("server error ",error.message);
     }
+    // eslint-disable-next-line
   }, [postId]);
 
   const handleUpdloadImage = async () => {
