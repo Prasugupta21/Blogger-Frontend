@@ -7,7 +7,6 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
-import axios from "axios";
 import {   Label, Spinner, TextInput } from "flowbite-react";
 import Alert from "../components/Alert";
 import OAuth from "../components/OAuth";
@@ -34,14 +33,16 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      const data=await res.json()
+      
+      const data=await res.json();
+      
       const { success, message } = data;
       if (!success) {
         dispatch(signInFailure(message));
-        
+        return;
       }
       if (res.ok) {
-        dispatch(signInSuccess(res.data));
+        dispatch(signInSuccess(data));
 
 
         navigate("/");
