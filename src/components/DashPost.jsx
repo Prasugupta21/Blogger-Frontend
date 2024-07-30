@@ -15,7 +15,7 @@ const DashPost = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const {data,status} = await axios.get(`/posts/getposts?userId=${currUser?.user?._id}`);
+        const {data,status} = await axios.get(`https://blogger-backend-psi.vercel.app/posts/getposts?userId=${currUser?.user?._id}`);
         if(status===200){
           setUserPost(data?.posts)
           if (data?.posts?.length < 9) {
@@ -33,7 +33,7 @@ const DashPost = () => {
   const handleShowMore = async () => {
     const startIndex = userPost.length;
     try {
-      const { data, status } = await axios.get(`/posts/getposts?userId=${currUser?.user?._id}&startIndex=${startIndex}`);
+      const { data, status } = await axios.get(`https://blogger-backend-psi.vercel.app/posts/getposts?userId=${currUser?.user?._id}&startIndex=${startIndex}`);
       if (status === 200) {
         setUserPost(prev => [...prev, ...data.posts]);
         if (data.posts.length < 9) setShowMore(false);
@@ -47,7 +47,7 @@ const DashPost = () => {
   const handleDeletePost = async () => {
     setShowModal(false);
     try {
-      const {  status } = await axios.delete(`/posts/deletepost/${postId}/${currUser?.user?._id}`);
+      const {  status } = await axios.delete(`https://blogger-backend-psi.vercel.app/posts/deletepost/${postId}/${currUser?.user?._id}`);
       if (status === 200) {
         setUserPost(prev => prev.filter(post => post._id !== postId));
         

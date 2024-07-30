@@ -14,7 +14,7 @@ const OAuth = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result.user);
-      const res = await fetch("/google", {
+      const res = await fetch("https://blogger-backend-psi.vercel.app/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

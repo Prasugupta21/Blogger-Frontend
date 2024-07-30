@@ -23,7 +23,7 @@ const CommentSection = ({postId}) => {
         e.preventDefault();
         if(comment.length>200)return;
         try {
-            const {data,status}=await axios.post('/comments/createcomment',{
+            const {data,status}=await axios.post('https://blogger-backend-psi.vercel.app/comments/createcomment',{
                 content:comment,
                 postId,
                 userId:currUser?.user?._id
@@ -45,7 +45,7 @@ const CommentSection = ({postId}) => {
      useEffect(() => {
         const getComments=async () => {  
             try {
-                const {data,status}=await axios.get(`/comments/getpostcomment/${postId}`);
+                const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/comments/getpostcomment/${postId}`);
                   if(status===200){
                     setComments(data?.comments);
                
@@ -61,7 +61,7 @@ const CommentSection = ({postId}) => {
      const handleLike=async (id) => {
         try {
             if(!currUser)navigate('/login');
-            const {data,status}=await axios.put(`/comments/likecomment/${id}`);
+            const {data,status}=await axios.put(`https://blogger-backend-psi.vercel.app/comments/likecomment/${id}`);
             
             if(status===201){
              
@@ -85,7 +85,7 @@ setComments(comments.map((comment)=>
           setShowModal(false);
             if(!currUser)navigate('/login');
     try {
-        const {status}=await axios.delete(`/comments/deletecomment/${commentId}`);
+        const {status}=await axios.delete(`https://blogger-backend-psi.vercel.app/comments/deletecomment/${commentId}`);
         if(status===200){
             setComments(comments.filter((comment)=>comment._id !==commentId));
        

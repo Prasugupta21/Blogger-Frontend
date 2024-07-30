@@ -28,7 +28,7 @@ export default function UpdatePost() {
   useEffect(() => {
     try {
       const fetchPost = async () => {
-        const {data,status} = await axios.get(`/posts/getposts?postId=${postId}&userId=${currUser?.user?._id}`);
+        const {data,status} = await axios.get(`https://blogger-backend-psi.vercel.app/posts/getposts?postId=${postId}&userId=${currUser?.user?._id}`);
         if(status===200){
           setFormData(data?.posts[0]);
        
@@ -89,7 +89,7 @@ if(currUser?.user?.isAdmin) fetchPost();
     e.preventDefault();
     try {
         
-      const res = await fetch(`/posts/updatepost/${postId}/${currUser?.user?._id}`, {
+      const res = await fetch(`https://blogger-backend-psi.vercel.app/posts/updatepost/${postId}/${currUser?.user?._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

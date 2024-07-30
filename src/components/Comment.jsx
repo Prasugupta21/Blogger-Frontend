@@ -14,7 +14,7 @@ const {currUser}=useSelector(state=>state.user);
 useEffect(() => {
 const getUser=async()=>{
     try {
-        const {data,status}=await axios.get(`/${comment.userId}`);
+        const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/${comment.userId}`);
         if(status===200){
      setUser(data.user);
         }
@@ -35,7 +35,7 @@ const handleEdit=()=>{
 }
 const handleSave=async () => {
     try {
-        const {status}=await axios.put(`/comments/editcomment/${comment._id}`,{
+        const {status}=await axios.put(`https://blogger-backend-psi.vercel.app/comments/editcomment/${comment._id}`,{
             content:editedContent
         });
         if(status===201){

@@ -34,7 +34,7 @@ const Search = () => {
             
             const searchQuery=query.toString();
             try {
-              const {data,status}=await axios.get(`/posts/getposts?${searchQuery}`);
+              const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/posts/getposts?${searchQuery}`);
               if(status===200){
                   setLoading(false);
                   const postArray=Object.values(data?.posts);
@@ -101,7 +101,7 @@ const Search = () => {
         const searchQuery=query.toString();
 
         try {
-            const {data,status}=await axios.get(`/posts/getposts?${searchQuery}`);
+            const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/posts/getposts?${searchQuery}`);
         if(status===200){
            const postArray=Object.values(data?.posts);
                   

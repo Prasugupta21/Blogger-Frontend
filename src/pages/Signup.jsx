@@ -21,11 +21,16 @@ const Signup = () => {
     try {
       setLoading(true);
       setErrorMessage(null);
-      const res = await fetch('https://blogger-backend-tzyw.onrender.com/signup', {
+      const res = await fetch('https://blogger-backend-psi.vercel.app/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      if (!res.ok) {
+        const errorData = await res.json();
+        setLoading(false);
+        return setErrorMessage(errorData.message || 'An error occurred');
+      }
       const data = await res.json();
       const { success, message } = data;
       

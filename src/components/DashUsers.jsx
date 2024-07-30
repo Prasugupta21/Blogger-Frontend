@@ -17,7 +17,7 @@ const DashUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data, status } = await axios.get('/getusers');
+        const { data, status } = await axios.get('https://blogger-backend-psi.vercel.app/getusers');
         if (status === 200) {
           setUsers(data.users);
 
@@ -37,7 +37,7 @@ const DashUsers = () => {
   const handleShowMore = async () => {
     const startIndex = users.length;
     try {
-      const { data } = await axios.get(`/getusers?startIndex=${startIndex}`);
+      const { data } = await axios.get(`https://blogger-backend-psi.vercel.app/getusers?startIndex=${startIndex}`);
       if (data?.success) {
         setUsers((prev) => [...prev, ...data.users]);
         if (data.users.length < 9) setShowMore(false);
@@ -51,7 +51,7 @@ const DashUsers = () => {
 
   const handleDeleteUser = async () => {
     try {
-      const {  status } = await axios.delete(`/delete/${id}`);
+      const {  status } = await axios.delete(`https://blogger-backend-psi.vercel.app/delete/${id}`);
       if (status === 200) {
         
         setUsers((prevUsers) => {

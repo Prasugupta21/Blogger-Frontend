@@ -96,7 +96,7 @@ const DashProfile = () => {
 
   const handleLogOut = async () => {
     try {
-      const data = await axios.post("/logout");
+      const data = await axios.post("https://blogger-backend-psi.vercel.app/logout");
       if (data.status === 200) {
         dispatch(signoutSuccess());
         navigate("/login");
@@ -122,7 +122,7 @@ const DashProfile = () => {
    
     try {
       dispatch(updateStart());
-      const res = await fetch(`/update/${currUser?.user?._id}`, {
+      const res = await fetch(`https://blogger-backend-psi.vercel.app/update/${currUser?.user?._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -151,7 +151,7 @@ const DashProfile = () => {
     setShowModal(false);
     try {
       dispatch(deleteUserStart());
-      const data = await axios.delete(`/delete/${currUser?.user?._id}`);
+      const data = await axios.delete(`https://blogger-backend-psi.vercel.app/delete/${currUser?.user?._id}`);
       if (data.status === 200) {
         dispatch(deleteUserSuccess(data.user));
         setShowModal(false);

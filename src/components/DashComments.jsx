@@ -14,7 +14,7 @@ export default function DashComments() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const { data, status } = await axios.get(`/comments/getcomments`);
+        const { data, status } = await axios.get(`https://blogger-backend-psi.vercel.app/comments/getcomments`);
         if (status === 200) {
           setComments(data.comments);
           if (data?.comments?.length < 9) {
@@ -34,7 +34,7 @@ export default function DashComments() {
   const handleShowMore = async () => {
     const startIndex = comments.length;
     try {
-      const { data, status } = await axios.get(`/comments/getcomments?startIndex=${startIndex}`);
+      const { data, status } = await axios.get(`https://blogger-backend-psi.vercel.app/comments/getcomments?startIndex=${startIndex}`);
       if (status === 200) {
         setComments((prev) => [...prev, ...data.comments]);
         if (data.comments.length < 9) {
@@ -49,7 +49,7 @@ export default function DashComments() {
   const handleDeleteComment = async () => {
     setShowModal(false);
     try {
-      const { data, status } = await axios.delete(`/comments/deletecomment/${commentIdToDelete}`);
+      const { data, status } = await axios.delete(`https://blogger-backend-psi.vercel.app/comments/deletecomment/${commentIdToDelete}`);
       if (status === 200) {
         setComments((prev) =>
           prev.filter((comment) => comment._id !== commentIdToDelete)
