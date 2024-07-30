@@ -31,8 +31,9 @@ const Login = () => {
       const res = await fetch('https://blogger-backend-psi.vercel.app/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        
         body: JSON.stringify(formData),
-      });
+      },{ withCredentials: true });
       
       const data=await res.json();
       
