@@ -8,8 +8,14 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/posts/getposts");
+      const res = await fetch("/posts/getposts",{
+        method:'GET',
+        headers:{
+          'Content-Type':'application/json',
+        }
+      });
       const data = await res.json();
+      console.log ("home page posts",data);
       setPosts(data.posts);
     };
     fetchPosts();
