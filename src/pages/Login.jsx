@@ -38,16 +38,21 @@ const Login = () => {
       
       const { success, message } = data;
       if (!success) {
+        console.log('not success in login');
         dispatch(signInFailure(message));
         return;
       }
       if (res.ok) {
+        console.log(' success in login ',data);
+
         dispatch(signInSuccess(data));
 
 
         navigate("/");
       } 
     } catch (error) {
+      console.log('Server Error in login');
+
       dispatch(signInFailure(error.message));
     }
   };
