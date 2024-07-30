@@ -29,20 +29,23 @@ const Login = () => {
     }
     try {
       dispatch(signInStart());
-      const res = await axios.post("/login", formData);
-      const { success, message } = res.data;
+      const res = await fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data=await res.json()
+      const { success, message } = data;
       if (!success) {
         dispatch(signInFailure(message));
         
       }
-      if (success) {
+      if (res.ok) {
         dispatch(signInSuccess(res.data));
 
 
         navigate("/");
-      } else {
-        dispatch(signInFailure(message));
-      }
+      } 
     } catch (error) {
       dispatch(signInFailure(error.message));
     }

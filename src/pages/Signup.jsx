@@ -29,15 +29,17 @@ const Signup = () => {
       const data = await res.json();
       const { success, message } = data;
       
-      if (success) {
+      if (success==false) {
+        return setErrorMessage(message);
+       
         
-        setLoading(false);
-        navigate('/login');
-      } else {
+      } 
        
         setLoading(false);
-        setErrorMessage(message);
-      }
+        
+       if(res.ok){
+        navigate('/login');
+       }
     } catch (error) {
       setLoading(false);
       setErrorMessage(error.message);
