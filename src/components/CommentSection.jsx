@@ -28,16 +28,20 @@ const CommentSection = ({postId}) => {
                 postId,
                 userId:currUser?.user?._id
             });
-        
+        console.log('comment creation ',data);
             if(status===201){
                 setComment('');
             setCommentError(null);
+            console.log('comment creation success ',data);
 
         
                 setComments([data?.newComment,...comments]);
             }
+            else{
+              console.log('comment creation failure ');
+            }
         } catch (e) {
-            console.error('Error', e)
+            console.error('Error in comment creation', e)
         }
         
      }
@@ -46,9 +50,16 @@ const CommentSection = ({postId}) => {
         const getComments=async () => {  
             try {
                 const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/comments/getpostcomment/${postId}`);
+                console.log('comment getting ',data);
+
                   if(status===200){
                     setComments(data?.comments);
-               
+                    console.log('comment getting success ',data);
+
+                  }
+                  else{
+                    console.log('comment getting failure ');
+
                   }
     
             } catch (e) {
@@ -62,12 +73,17 @@ const CommentSection = ({postId}) => {
         try {
             if(!currUser)navigate('/login');
             const {data,status}=await axios.put(`https://blogger-backend-psi.vercel.app/comments/likecomment/${id}`);
-            
+            console.log('comment liking  ',data);
+
             if(status===201){
-             
+             console.log('comment liking success');
 setComments(comments.map((comment)=>
     comment._id===id ? {...comment,likes:data.comment.likes,numberOfLikes:data.comment.numberOfLikes}:comment
 ))
+            }
+            else{
+              console.log(' comment liking failure    ')
+              
             }
         } catch (e) {
             console.error('Error in liking comment', e)
@@ -86,9 +102,17 @@ setComments(comments.map((comment)=>
             if(!currUser)navigate('/login');
     try {
         const {status}=await axios.delete(`https://blogger-backend-psi.vercel.app/comments/deletecomment/${commentId}`);
+        console.log('comment deleting');
+
         if(status===200){
+          console.log('comment deleting success');
+
             setComments(comments.filter((comment)=>comment._id !==commentId));
        
+        }
+        else{
+          console.log('comment deleting failure ');
+
         }
     } catch (e) {
         console.error('Error in deleting comment', e)

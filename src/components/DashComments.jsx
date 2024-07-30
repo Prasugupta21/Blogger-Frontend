@@ -35,7 +35,11 @@ export default function DashComments() {
     const startIndex = comments.length;
     try {
       const { data, status } = await axios.get(`https://blogger-backend-psi.vercel.app/comments/getcomments?startIndex=${startIndex}`);
+      console.log('handle show more ',data);
+
       if (status === 200) {
+        console.log('handle show more success ',data);
+
         setComments((prev) => [...prev, ...data.comments]);
         if (data.comments.length < 9) {
           setShowMore(false);
@@ -50,7 +54,11 @@ export default function DashComments() {
     setShowModal(false);
     try {
       const { data, status } = await axios.delete(`https://blogger-backend-psi.vercel.app/comments/deletecomment/${commentIdToDelete}`);
+      console.log('deleting comment ',data);
+
       if (status === 200) {
+        console.log('deleting comment success ',data);
+
         setComments((prev) =>
           prev.filter((comment) => comment._id !== commentIdToDelete)
         );
@@ -58,7 +66,8 @@ export default function DashComments() {
         console.log(data.message);
       }
     } catch (error) {
-      console.log(error.message);
+      
+      console.log("server error in deleting comment ",error.message);
     }
   };
 

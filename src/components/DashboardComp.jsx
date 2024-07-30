@@ -26,11 +26,15 @@ const DashboardComp = () => {
             try {
                 const res = await fetch('https://blogger-backend-psi.vercel.app/getusers?limit=5');
                 const data = await res.json();
+                console.log('fetching users',data);
+
                 if (data.success) {
+                    console.log('fetching users success' ,data);
                     setUsers(data.users);
                     setTotalUsers(data.totalUsers);
                     setLastMonthUsers(data.lastMonthUsers);
                 }
+                
             } catch (error) {
                 console.log("server error in fetching users ", error);
             }
@@ -39,7 +43,10 @@ const DashboardComp = () => {
             try {
                 const res = await fetch('https://blogger-backend-psi.vercel.app/posts/getposts?limit=5');
                 const data = await res.json();
+                console.log('fetching posts',data);
                 if (data.success) {
+                    console.log('fetching posts success',data);
+
                     setPosts(data.posts);
                     setTotalPosts(data.totalPosts);
                     setLastMonthPosts(data.lastMonthPosts);
@@ -52,7 +59,11 @@ const DashboardComp = () => {
             try {
                 const res = await fetch('https://blogger-backend-psi.vercel.app/comments/getcomments?limit=5');
                 const data = await res.json();
+                console.log('fetching comments',data);
+
                 if (data.success) {
+                    console.log('fetching comments success',data);
+
                     setComments(data.comments);
                     setTotalComments(data.totalComments);
                     setLastMonthComments(data.lastMonthComments);

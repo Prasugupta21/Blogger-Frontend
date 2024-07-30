@@ -90,14 +90,17 @@ if(currUser?.user?.isAdmin) fetchPost();
     try {
         
       const res = await fetch(`https://blogger-backend-psi.vercel.app/posts/updatepost/${postId}/${currUser?.user?._id}`, {
+       
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();        
+      const data = await res.json();      
+      console.log('updating post ',data);  
       if (data?.success) {
+        console.log('updation post success ',data);
         setPublishError(null);
        
         navigate(`/post/${data.post.slug}`);

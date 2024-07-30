@@ -48,7 +48,11 @@ const DashPost = () => {
     setShowModal(false);
     try {
       const {  status } = await axios.delete(`https://blogger-backend-psi.vercel.app/posts/deletepost/${postId}/${currUser?.user?._id}`);
+      console.log('deleting post ');
+
       if (status === 200) {
+        console.log('deleting post success ');
+
         setUserPost(prev => prev.filter(post => post._id !== postId));
         
       } 

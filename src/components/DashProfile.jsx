@@ -97,6 +97,7 @@ const DashProfile = () => {
   const handleLogOut = async () => {
     try {
       const data = await axios.post("https://blogger-backend-psi.vercel.app/logout");
+
       if (data.status === 200) {
         dispatch(signoutSuccess());
         navigate("/login");
@@ -123,6 +124,7 @@ const DashProfile = () => {
     try {
       dispatch(updateStart());
       const res = await fetch(`https://blogger-backend-psi.vercel.app/update/${currUser?.user?._id}`, {
+        
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +133,11 @@ const DashProfile = () => {
       });
 
       const data = await res.json();
+      console.log('updatating profile ',data);
+
       if (data.success) {
+        console.log('deleting profile  success',data);
+
         dispatch(updateSuccess(data));
         setUpdateUserSuccess("User's profile updated successfully");
         setImageFileUploadProgress(null);
@@ -141,7 +147,7 @@ const DashProfile = () => {
 
       }
     } catch (error) {
-
+console.log('Server Error');
       dispatch(updateFailure(error.message));
       setUpdateUserError(error.message);
     }
