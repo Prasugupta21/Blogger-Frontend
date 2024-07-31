@@ -21,7 +21,7 @@ const Signup = () => {
     try {
       setLoading(true);
       setErrorMessage(null);
-      const res = await fetch('/signup', {
+      const res = await fetch('https://blogger-backend-psi.vercel.app/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
