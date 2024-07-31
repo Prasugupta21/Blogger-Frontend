@@ -123,16 +123,20 @@ const DashProfile = () => {
    
     try {
       dispatch(updateStart());
-      const {data,status} = await axios.post(`https://blogger-backend-psi.vercel.app/update/${currUser?.user?._id}`, {
+      const res = await fetch(`https://blogger-teal-one.vercel.app/update/${currUser?.user?._id}`, {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData)
         
-        
-        formData
+     
       });
 
-      
+      const data=await res.json();
       console.log('updatating profile ',data);
 
-      if (status===201) {
+      if (data.success) {
         console.log('updating profile  success',data);
 
         dispatch(updateSuccess(data));
@@ -145,7 +149,7 @@ const DashProfile = () => {
 
       }
     } catch (error) {
-console.log('Server Error');
+console.log('Server Error',error);
       dispatch(updateFailure(error.message));
       setUpdateUserError(error.message);
     }
@@ -155,7 +159,7 @@ console.log('Server Error');
     setShowModal(false);
     try {
       dispatch(deleteUserStart());
-      const {data,status} = await axios.delete(`https://blogger-backend-psi.vercel.app/delete/${currUser?.user?._id}`);
+      const {data,status} = await axios.delete(`https://blogger-teal-one.vercel.app/delete/${currUser?.user?._id}`);
       console.log('deleting  user' ,data);
       if (status === 200) {
         console.log('success in deleting ');
