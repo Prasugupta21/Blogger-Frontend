@@ -12,7 +12,7 @@ export default function DashSidebar() {
  
   const handleLogOut = async () => {
     try {
-      const data = await axios.post("https://blogger-backend-psi.vercel.app/logout");
+      const data = await axios.post("https://blogger-backend-tzyw.onrender.com/logout");
       
       if (data.status === 200) {
         dispatch(signoutSuccess());

@@ -21,7 +21,7 @@ export default function PostPage() {
     const fetchPost = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`https://blogger-backend-psi.vercel.app/posts/getposts?slug=${postSlug}`);
+        const res = await fetch(`https://blogger-backend-tzyw.onrender.com/posts/getposts?slug=${postSlug}`);
         const data = await res.json();
         if (data.success) {
           setPost(data.posts[0]);
@@ -42,7 +42,7 @@ export default function PostPage() {
   useEffect(() => {
     try {
       const fetchRecentPosts = async () => {
-        const res = await fetch(`https://blogger-backend-psi.vercel.app/posts/getposts?limit=3`);
+        const res = await fetch(`https://blogger-backend-tzyw.onrender.com/posts/getposts?limit=3`);
         const data = await res.json();
         if (data.success) {
           setRecentPosts(data.posts);

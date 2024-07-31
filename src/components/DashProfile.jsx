@@ -96,7 +96,7 @@ const DashProfile = () => {
 
   const handleLogOut = async () => {
     try {
-      const data = await axios.post("https://blogger-backend-psi.vercel.app/logout");
+      const data = await axios.post("https://blogger-backend-tzyw.onrender.com/logout");
 
       if (data.status === 200) {
         dispatch(signoutSuccess());
@@ -123,7 +123,7 @@ const DashProfile = () => {
    
     try {
       dispatch(updateStart());
-      const res = await fetch(`https://blogger-backend-psi.vercel.app/update/${currUser?.user?._id}`, {
+      const res = await fetch(`https://blogger-backend-tzyw.onrender.com/update/${currUser?.user?._id}`, {
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -159,7 +159,7 @@ console.log('Server Error',error);
     setShowModal(false);
     try {
       dispatch(deleteUserStart());
-      const {data,status} = await axios.delete(`https://blogger-backend-psi.vercel.app/delete/${currUser?.user?._id}`);
+      const {data,status} = await axios.delete(`https://blogger-backend-tzyw.onrender.com/delete/${currUser?.user?._id}`);
       console.log('deleting  user' ,data);
       if (status === 200) {
         console.log('success in deleting ');

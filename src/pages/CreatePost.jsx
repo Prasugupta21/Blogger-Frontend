@@ -57,7 +57,7 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://blogger-backend-psi.vercel.app/posts/create', {
+      const res = await fetch('https://blogger-backend-tzyw.onrender.com/posts/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
