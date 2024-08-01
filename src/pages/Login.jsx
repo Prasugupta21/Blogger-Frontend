@@ -31,7 +31,7 @@ const Login = () => {
       const res = await fetch('https://blogger-backend-tzyw.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        
+        credentials: 'include',
         body: JSON.stringify(formData),
       },{ withCredentials: true });
       
@@ -39,13 +39,14 @@ const Login = () => {
       
       const { success, message } = data;
       if (!success) {
+        
         console.log('not success in login');
         dispatch(signInFailure(message));
         return;
       }
       if (res.ok) {
         console.log(' success in login ',data);
-
+        
         dispatch(signInSuccess(data));
 
 

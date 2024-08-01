@@ -123,11 +123,14 @@ const DashProfile = () => {
    
     try {
       dispatch(updateStart());
+     
       const res = await fetch(`https://blogger-backend-tzyw.onrender.com/update/${currUser?.user?._id}`, {
         method:"POST",
         headers:{
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          
         },
+        credentials:'include',
         body:JSON.stringify(formData)
         
      

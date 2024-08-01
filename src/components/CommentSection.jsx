@@ -23,13 +23,20 @@ const CommentSection = ({postId}) => {
         e.preventDefault();
         if(comment.length>200)return;
         try {
-            const {data,status}=await axios.post('https://blogger-backend-psi.vercel.app/comments/createcomment',{
+            const res=await fetch('https://blogger-backend-psi.vercel.app/comments/createcomment',{
+              method:"POST",
+              credentials:"include",
+              body:JSON.stringify({
                 content:comment,
                 postId,
-                userId:currUser?.user?._id
+                userId:currUser?.user?._id,
+              })
+               
+               
             });
+            const data=await res.json();
         console.log('comment creation ',data);
-            if(status===201){
+            if(res.ok){
                 setComment('');
             setCommentError(null);
             console.log('comment creation success ',data);
@@ -49,7 +56,8 @@ const CommentSection = ({postId}) => {
      useEffect(() => {
         const getComments=async () => {  
             try {
-                const {data,status}=await axios.get(`https://blogger-backend-psi.vercel.app/comments/getpostcomment/${postId}`);
+                const {data,status}=await axios.get(`https://blogger-backend-tzyw.onrender.com/comments/getpostcomment/${postId}`,{                credentials:"include",
+                });
                 console.log('comment getting ',data);
 
                   if(status===200){
@@ -72,10 +80,16 @@ const CommentSection = ({postId}) => {
      const handleLike=async (id) => {
         try {
             if(!currUser)navigate('/login');
-            const {data,status}=await axios.put(`https://blogger-backend-psi.vercel.app/comments/likecomment/${id}`);
+            const res=await fetch(`https://blogger-backend-tzyw.onrender.com/comments/likecomment/${id}`,   
+                         { 
+
+                          method:"PUT",
+                        
+                           credentials:"include",}
+            );
             console.log('comment liking  ',data);
 
-            if(status===201){
+            if(res.ok){
              console.log('comment liking success');
 setComments(comments.map((comment)=>
     comment._id===id ? {...comment,likes:data.comment.likes,numberOfLikes:data.comment.numberOfLikes}:comment
@@ -101,10 +115,11 @@ setComments(comments.map((comment)=>
           setShowModal(false);
             if(!currUser)navigate('/login');
     try {
-        const {status}=await axios.delete(`https://blogger-backend-psi.vercel.app/comments/deletecomment/${commentId}`);
+        const res=await fetch(`https://blogger-backend-tzyw.onrender.com/comments/deletecomment/${commentId}`,{     method:"DELETE",           credentials:"include",
+});
         console.log('comment deleting');
 
-        if(status===200){
+        if(res.ok){
           console.log('comment deleting success');
 
             setComments(comments.filter((comment)=>comment._id !==commentId));

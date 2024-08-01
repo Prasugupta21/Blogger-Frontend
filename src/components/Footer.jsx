@@ -25,14 +25,14 @@ export default function FooterSection() {
         </a>
     </div>
     <nav className="flex justify-center flex-wrap gap-4  dark:text-white ">
-        <Link className="hover:text-pink-500 text-black dark:text-white" href="/">Home</Link>
+        <Link className="hover:text-pink-500 text-black dark:text-white" to="/">Home</Link>
         <p className='dark:text-white text-black'> |</p>
-        <Link className="hover:text-pink-500 text-black dark:text-white" href="/about">About</Link>
+        <Link className="hover:text-pink-500 text-black dark:text-white" to="/about">About</Link>
         <p className='dark:text-white text-black'> |</p>
-        <Link className="hover:text-pink-500 text-black dark:text-white" href="#">Privacy Policy</Link>
+        <Link className="hover:text-pink-500 text-black dark:text-white" to="#">Privacy Policy</Link>
         <p className='dark:text-white text-black '> |</p>
 
-        <Link className="hover:text-pink-500 text-black dark:text-white" href="#">Terms & Condition's</Link>
+        <Link className="hover:text-pink-500 text-black dark:text-white" to="#">Terms & Condition's</Link>
 
     </nav>
     <p className="text-center dark:text-gray-700 font-medium">&copy; 2024 <Link className='dark:hover:text-white' href={'https://github.com/Prasugupta21'}
