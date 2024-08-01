@@ -36,14 +36,14 @@ const handleEdit=()=>{
 }
 const handleSave=async () => {
     try {
-        const res=await fetch(`https://blogger-backend-tzyw.onrender.com/comments/editcomment/${comment._id}`,{
-          method:"PUT",
-          credentials:"include",
-           body:JSON.stringify({content:editedContent})
+        const {status}=await axios.put(`https://blogger-backend-tzyw.onrender.com/comments/editcomment/${comment._id}`,{content:editedContent},{
+           withCredentials:'true'
+      
+
            
 
         });
-        if(res.ok){
+        if(status===201){
             setIsEditing(false);
             onEdit(comment,editedContent);
         }
