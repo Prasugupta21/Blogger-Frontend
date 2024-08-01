@@ -23,20 +23,20 @@ const CommentSection = ({postId}) => {
         e.preventDefault();
         if(comment.length>200)return;
         try {
-            const res=await fetch('https://blogger-backend-tzyw.onrender.com/comments/createcomment',{
-              method:"POST",
-              credentials:"include",
-              body:JSON.stringify({
+         const {data,status}=await axios.post('https://blogger-backend-tzyw.onrender.com/comments/createcomment',{
+            
+         
                 content:comment,
                 postId,
                 userId:currUser?.user?._id,
-              })
+              },
                
-               
+                                              { 
+                                                  withCredentials:'true'
             });
-            const data=await res.json();
+         
         console.log('comment creation ',data);
-            if(res.ok){
+            if(status===201){
                 setComment('');
             setCommentError(null);
             console.log('comment creation success ',data);
@@ -56,8 +56,7 @@ const CommentSection = ({postId}) => {
      useEffect(() => {
         const getComments=async () => {  
             try {
-                const {data,status}=await axios.get(`https://blogger-backend-tzyw.onrender.com/comments/getpostcomment/${postId}`,{                credentials:"include",
-                });
+                const {data,status}=await axios.get(`https://blogger-backend-tzyw.onrender.com/comments/getpostcomment/${postId}`);
                 console.log('comment getting ',data);
 
                   if(status===200){
