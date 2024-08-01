@@ -23,7 +23,7 @@ const CommentSection = ({postId}) => {
         e.preventDefault();
         if(comment.length>200)return;
         try {
-            const res=await fetch('https://blogger-backend-psi.vercel.app/comments/createcomment',{
+            const res=await fetch('https://blogger-backend-tzyw.onrender.com/comments/createcomment',{
               method:"POST",
               credentials:"include",
               body:JSON.stringify({

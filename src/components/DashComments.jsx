@@ -14,8 +14,13 @@ export default function DashComments() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const { data, status } = await axios.get(`https://blogger-backend-psi.vercel.app/comments/getcomments`);
-        if (status === 200) {
+        const res= await axios.get(`https://blogger-backend-psi.vercel.app/comments/getcomments`,{
+               method:"GET",
+                    credentials:"include"
+        })
+        const data=await res.json();
+
+        if (res.ok) {
           setComments(data.comments);
           if (data?.comments?.length < 9) {
             setShowMore(false);

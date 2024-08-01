@@ -8,7 +8,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("hhttps://blogger-backend-tzyw.onrender.com/posts/getposts",{
+      const res = await fetch("https://blogger-backend-tzyw.onrender.com/posts/getposts",{
         method:'GET',
         headers:{
           'Content-Type':'application/json',
