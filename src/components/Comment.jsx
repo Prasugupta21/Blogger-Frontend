@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import {  Textarea } from 'flowbite-react'
-
+import axios from 'axios';
 const Comment = ({comment,onEdit,onLike,onDelete}) => {
 const [user,setUser]=useState({});
 const [isEditing, setIsEditing]=useState(false);
