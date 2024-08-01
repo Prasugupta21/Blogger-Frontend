@@ -87,6 +87,7 @@ const CommentSection = ({postId}) => {
                         
                            credentials:"include",}
             );
+            const data=await res.json();
             console.log('comment liking  ',data);
 
             if(res.ok){
