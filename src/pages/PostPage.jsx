@@ -50,7 +50,7 @@ export default function PostPage() {
       };
       fetchRecentPosts();
     } catch (error) {
-      console.log("server error in fetching recent post ", error.message);
+      
     }
   }, []);
 
