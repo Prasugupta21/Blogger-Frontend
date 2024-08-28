@@ -35,7 +35,7 @@ const Signup = () => {
       const { success, message } = data;
       
       if (success===false) {
-        console.log("success false ");
+      
         return setErrorMessage(message);
        
         
@@ -44,11 +44,11 @@ const Signup = () => {
         setLoading(false);
         
        if(res.ok){
-        console.log('success in signup');
+       
         navigate('/login');
        }
     } catch (error) {
-      console.log('Server Error',error);
+    
       setLoading(false);
       setErrorMessage(error.message);
     }
