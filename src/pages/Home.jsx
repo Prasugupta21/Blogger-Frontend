@@ -56,7 +56,7 @@ const Home = () => {
               </Link>
             </div>
           ):(
-             <p class="text-base">There are no posts yet. Please check back soon!</p>
+             <p class="text-base">Loading...</p>
 
 
           )}
