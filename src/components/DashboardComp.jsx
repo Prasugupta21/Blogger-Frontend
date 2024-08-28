@@ -24,7 +24,7 @@ const DashboardComp = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch('https://blogger-backend-psi.vercel.app/getusers?limit=5',{
+                const res = await fetch('https://blogger-backend-tzyw.onrender.com/getusers?limit=5',{
                     method:"GET",
                     credentials:"include",
 
@@ -45,7 +45,7 @@ const DashboardComp = () => {
         };
         const fetchPosts = async () => {
             try {
-                const res = await fetch('https://blogger-backend-psi.vercel.app/posts/getposts?limit=5');
+                const res = await fetch('https://blogger-backend-tzyw.onrender.com/posts/getposts?limit=5');
                 const data = await res.json();
                 console.log('fetching posts',data);
                 if (data.success) {
@@ -61,7 +61,7 @@ const DashboardComp = () => {
         };
         const fetchComments = async () => {
             try {
-                const res = await fetch('https://blogger-backend-psi.vercel.app/comments/getcomments?limit=5',{
+                const res = await fetch('https://blogger-backend-tzyw.onrender.com/comments/getcomments?limit=5',{
                     method:"GET",
                     credentials:"include"
                 });
