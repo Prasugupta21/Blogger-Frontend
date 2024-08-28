@@ -43,10 +43,7 @@ const Search = () => {
                 if(data.posts.length===9)setShowMore(true);
                 else setShowMore(false);
               }
-              else{
-                  
-                  console.log('Failure in fetching posts');
-              }
+              
                   
             } 
               catch (e) {
