@@ -65,10 +65,9 @@ export default function CreatePost() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log('creating posts ',data);
-
+     
       if (data.success) {
-        console.log('creating posts  success',data);
+       
 
         setPublishError(null);
         navigate(`/post/${data.newPost.slug}`);
@@ -76,7 +75,7 @@ export default function CreatePost() {
         setPublishError(data.message);
       }
     } catch (error) {
-      console.log('server error')
+    
       setPublishError('Something went wrong');
     }
   };
