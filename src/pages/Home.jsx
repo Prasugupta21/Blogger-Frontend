@@ -14,9 +14,9 @@ const Home = () => {
           'Content-Type':'application/json',
         }
       });
-      console.log('res is ',res);
+  
       const data = await res.json();
-      console.log ("home page posts",data);
+ 
       setPosts(data.posts);
     };
     fetchPosts();
