@@ -299,10 +299,10 @@ console.log('Server Error',error);
               Are you sure you want to delete your account?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={handleDeleteUser}>
+              <Button className="bg-red-700" onClick={handleDeleteUser}>
                 Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setShowModal(false)}>
+              <Button className="bg-gray-600" onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>

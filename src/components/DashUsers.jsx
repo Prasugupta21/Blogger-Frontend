@@ -154,7 +154,7 @@ const {success,message}=data;
       ) : (
         <p className='text-center'>You have no users yet!</p>
       )}
-      <Modal
+     <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         popup

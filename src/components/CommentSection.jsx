@@ -218,12 +218,13 @@ const CommentSection = ({ postId }) => {
           ))}
         </>
       )}
+     <div className="overflow-x-auto text-white md:mx-auto p-3 mt-16">
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         popup
         size="md"
-        className="w-1/3 mx-auto"
+          className='md:w-1/3   mx-auto mt-32 shadow-slate-800   '
       >
         <Modal.Header />
         <Modal.Body>
@@ -233,16 +234,18 @@ const CommentSection = ({ postId }) => {
               Are you sure you want to delete this comment?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => handleDelete(id)}>
+              <Button className="bg-red-700" onClick={() => handleDelete(id)}>
                 Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setShowModal(false)}>
+              <Button className="bg-gray-600" onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>
           </div>
         </Modal.Body>
       </Modal>
+      </div>
+     
     </div>
   );
 };
