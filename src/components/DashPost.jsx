@@ -154,6 +154,7 @@ const DashPost = () => {
         size="md"
         className="md:w-1/3   mx-auto mt-32 shadow-slate-800   "
       >
+        
         <Modal.Header />
         <Modal.Body>
           <div className="text-center">

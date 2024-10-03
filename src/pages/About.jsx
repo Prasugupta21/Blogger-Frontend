@@ -15,7 +15,7 @@ const  About=()=> {
               <p>
                 On this blog, you'll find  articles and tutorials on topics
                 such as web development, software engineering, and programming
-                languages. Sahand is always learning and exploring new
+                languages. Prasu is always learning and exploring new
                 technologies, so be sure to check back often for new content!
               </p>
   
