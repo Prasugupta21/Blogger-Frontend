@@ -218,8 +218,8 @@ const CommentSection = ({ postId }) => {
           ))}
         </>
       )}
-     <div className="overflow-x-auto text-white md:mx-auto p-3 mt-16">
-      <Modal
+    <div className="max-w-lg mx-auto p-3 w-full">
+    <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         popup
