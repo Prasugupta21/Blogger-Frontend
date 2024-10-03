@@ -17,10 +17,20 @@ const DashUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data, status } = await axios.get('https://blogger-backend-tzyw.onrender.com/getusers');
+        const res= await fetch('https://blogger-backend-tzyw.onrender.com/getusers',{
+          method:"GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials:"include",
+                               },{withCredentials:true}
+                                 );
+
+       const data=await res.json();
+       const {success,message}=data;
         console.log('fetching user ',data);
 
-        if (status === 200) {
+        if (success) {
 
           setUsers(data.users);
           console.log('fetching user success ',data);
@@ -28,8 +38,7 @@ const DashUsers = () => {
 
          
           if (data?.users?.length < 9) setShowMore(false);
-        } else {
-        }
+        } else console.log('failure ',message);
       } catch (error) {
         console.log("server error ", error);
       }
@@ -57,10 +66,18 @@ const DashUsers = () => {
 
   const handleDeleteUser = async () => {
     try {
-      const {  status } = await axios.delete(`https://blogger-backend-tzyw.onrender.com/delete/${id}`);
-      console.log('deleting user ');
-
-      if (status === 200) {
+      const res = await fetch(`https://blogger-backend-tzyw.onrender.com/delete/${currUser?.user?._id}`,
+        {
+method: "DELETE",
+headers: {
+"Content-Type": "application/json",
+},
+credentials:"include",
+        },{withCredentials:true}
+          );
+const data=await res.json();
+const {success,message}=data;
+      if (success) {
         console.log('deleting user success ');
 
         setUsers((prevUsers) => {
@@ -71,7 +88,7 @@ const DashUsers = () => {
        
         setShowModal(false);
       } else {
-        console.log('failure in deleting users');
+        console.log('failure in deleting users',message);
       }
     } catch (e) {
       console.error('Server Error', e);

@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { Modal, Button } from 'flowbite-react';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Modal, Button } from "flowbite-react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const DashPost = () => {
-  const { currUser } = useSelector(state => state.user);
+  const { currUser } = useSelector((state) => state.user);
   const [userPost, setUserPost] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [postId, setPostId] = useState('');
+  const [postId, setPostId] = useState("");
   const [showMore, setShowMore] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const {data,status} = await axios.get(`https://blogger-backend-tzyw.onrender.com/posts/getposts?userId=${currUser?.user?._id}`);
-        if(status===200){
-          setUserPost(data?.posts)
+        const { data, status } = await axios.get(
+          `https://blogger-backend-tzyw.onrender.com/posts/getposts?userId=${currUser?.user?._id}`,
+          { withCredentials: true }
+        );
+        if (status === 200) {
+          setUserPost(data?.posts);
           if (data?.posts?.length < 9) {
             setShowMore(false);
           }
         }
       } catch (error) {
-        console.log('Server error', error);
+        console.log("Server error", error);
       }
     };
     if (currUser?.user?.isAdmin) fetchPosts();
@@ -33,31 +36,35 @@ const DashPost = () => {
   const handleShowMore = async () => {
     const startIndex = userPost.length;
     try {
-      const { data, status } = await axios.get(`https://blogger-backend-tzyw.onrender.com/posts/getposts?userId=${currUser?.user?._id}&startIndex=${startIndex}`);
+      const { data, status } = await axios.get(
+        `https://blogger-backend-tzyw.onrender.com/posts/getposts?userId=${currUser?.user?._id}&startIndex=${startIndex}`
+      );
       if (status === 200) {
-        setUserPost(prev => [...prev, ...data.posts]);
+        setUserPost((prev) => [...prev, ...data.posts]);
         if (data.posts.length < 9) setShowMore(false);
       } else {
       }
     } catch (e) {
-      console.error('Server Error', e);
+      console.error("Server Error", e);
     }
   };
 
   const handleDeletePost = async () => {
     setShowModal(false);
     try {
-      const {  status } = await axios.delete(`https://blogger-backend-tzyw.onrender.com/posts/deletepost/${postId}/${currUser?.user?._id}`);
-      console.log('deleting post ');
+      const { status } = await axios.delete(
+        `https://blogger-backend-tzyw.onrender.com/posts/deletepost/${postId}/${currUser?.user?._id}`,
+        { withCredentials: true }
+      );
+      console.log("deleting post ");
 
       if (status === 200) {
-        console.log('deleting post success ');
+        console.log("deleting post success ");
 
-        setUserPost(prev => prev.filter(post => post._id !== postId));
-        
-      } 
+        setUserPost((prev) => prev.filter((post) => post._id !== postId));
+      }
     } catch (e) {
-      console.error('Server Error', e);
+      console.error("Server Error", e);
     }
   };
 
@@ -65,8 +72,9 @@ const DashPost = () => {
     <div className="table-auto overflow-x-auto text-white md:mx-auto p-3 mt-16">
       {currUser?.user?.isAdmin && userPost.length > 0 ? (
         <>
-
-        <h1 className='md:mx-auto flex justify-center  m-4 text-2xl'>Posts</h1>
+          <h1 className="md:mx-auto flex justify-center  m-4 text-2xl">
+            Posts
+          </h1>
           <table className="min-w-full bg-black dark:bg-gray-800 shadow-md">
             <thead className="bg-black dark:bg-gray-700 ">
               <tr>
@@ -86,11 +94,18 @@ const DashPost = () => {
                   </td>
                   <td className="border px-4 py-2">
                     <Link to={`/post/${post.slug}`}>
-                      <img src={post.image} alt={post.title} className="w-20 h-10 object-cover bg-gray-500" />
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-20 h-10 object-cover bg-gray-500"
+                      />
                     </Link>
                   </td>
                   <td className="border px-4 py-2">
-                    <Link className="font-medium  dark:text-white underline" to={`/post/${post.slug}`}>
+                    <Link
+                      className="font-medium  dark:text-white underline"
+                      to={`/post/${post.slug}`}
+                    >
                       {post.title}
                     </Link>
                   </td>
@@ -100,7 +115,6 @@ const DashPost = () => {
                       onClick={() => {
                         setShowModal(true);
                         setPostId(post._id);
-                        
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
@@ -108,7 +122,10 @@ const DashPost = () => {
                     </span>
                   </td>
                   <td className="border px-4 py-2">
-                    <Link className="text-teal-500 hover:underline" to={`/update-post/${post._id}`}>
+                    <Link
+                      className="text-teal-500 hover:underline"
+                      to={`/update-post/${post._id}`}
+                    >
                       Edit
                     </Link>
                   </td>
@@ -117,27 +134,41 @@ const DashPost = () => {
             </tbody>
           </table>
           {showMore && (
-            <button onClick={handleShowMore} className="w-full text-teal-500 self-center text-sm py-7">
+            <button
+              onClick={handleShowMore}
+              className="w-full text-teal-500 self-center text-sm py-7"
+            >
               Show more
             </button>
           )}
         </>
       ) : (
-        <p className='text-base text-gray-800  dark:text-white'>You have no posts yet!</p>
+        <p className="text-base text-gray-800  dark:text-white">
+          You have no posts yet!
+        </p>
       )}
-      <Modal show={showModal} onClose={() => setShowModal(false)} popup size="md"    className='md:w-1/3   mx-auto mt-32 shadow-slate-800   '>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        popup
+        size="md"
+        className="md:w-1/3   mx-auto mt-32 shadow-slate-800   "
+      >
         <Modal.Header />
-        <Modal.Body   >
+        <Modal.Body>
           <div className="text-center">
             <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
             <h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
               Are you sure you want to delete this post?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button className='bg-red-700' onClick={handleDeletePost} >
+              <Button className="bg-red-700" onClick={handleDeletePost}>
                 Yes, I'm sure
               </Button>
-              <Button className="bg-gray-600" onClick={() => setShowModal(false)}>
+              <Button
+                className="bg-gray-600"
+                onClick={() => setShowModal(false)}
+              >
                 No, cancel
               </Button>
             </div>

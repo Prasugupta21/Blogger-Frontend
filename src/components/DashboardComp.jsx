@@ -26,6 +26,9 @@ const DashboardComp = () => {
             try {
                 const res = await fetch('https://blogger-backend-tzyw.onrender.com/getusers?limit=5',{
                     method:"GET",
+                    headers:{
+                        "Content-Type":"application/json",
+                       },
                     credentials:"include",
 
                 });
@@ -63,6 +66,9 @@ const DashboardComp = () => {
             try {
                 const res = await fetch('https://blogger-backend-tzyw.onrender.com/comments/getcomments?limit=5',{
                     method:"GET",
+                    headers:{
+                        "Content-Type":"application/json",
+                       },
                     credentials:"include"
                 });
                 const data = await res.json();
