@@ -35,7 +35,7 @@ export default function FooterSection() {
         <Link className="hover:text-pink-500 text-black dark:text-white" to="#">Terms & Condition's</Link>
 
     </nav>
-    <p className="text-center dark:text-gray-700 font-medium">&copy; 2024 <Link className='dark:hover:text-white' href={'https://github.com/Prasugupta21'}
+    <p className="text-center dark:text-gray-700 font-medium">&copy; 2025 <Link className='dark:hover:text-white' href={'https://github.com/Prasugupta21'}
      >Prasu Gupta</Link></p>
 </footer>
   )
